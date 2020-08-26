@@ -1,3 +1,5 @@
 packages/
 env.json
+__pycache__/
+package_auto_install.egg-info/
 
