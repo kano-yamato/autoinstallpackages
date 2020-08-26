@@ -2,7 +2,6 @@
 from pathlib import Path
 import json
 import subprocess
-from argparse import ArgumentParser
 
 def fetch_env() :
     with open("env.json") as f :
@@ -12,7 +11,7 @@ def main() :
     env = fetch_env()
     user_pass = env["user"] + ":" + env["pass"]
     package_paths = [
-        str(x).replace("\\","/") for x in Path(".").glob(env["path"] + "/*.zip")
+        str(x).replace("\\","/") for x in Path(env["path"]).iterdir()
     ]
     service_jsp = env["domain"] + "/crx/packmgr/service.jsp"
     for path in package_paths :
